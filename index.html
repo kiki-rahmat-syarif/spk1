@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frozen Food App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="beranda" class="page active">
+    <header class="header">
+      <div class="top-bar">
+        <div class="greeting">
+          <strong>Selamat datang!</strong>
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" id="search-box" placeholder="search" />
+        <span class="icon-search" onclick="cariProduk()">🔍</span>
+      </div>
+      <h1>macam-macam produk:</h1>
+    
+      <div class="category-filter">
+        <span onclick="filterCategory('all', event)" data-kategori="semua" class="category active">Semua</span>
+        <span onclick="filterCategory('fiesta', event)" class="category">Fiesta</span>
+        <span onclick="filterCategory('sogood', event)" class="category">So Good</span>
+        <span onclick="filterCategory('kenzleer', event)" class="category">Kenzleer</span>
+      </div>
+    </header>  
+    <div class="content-wrapper">
+      <h2 class="section-title">Diskon hari ini:</h2>
+    
+      <div class="highlight-product">
+        <img src="fiesta250.png" alt="Fiesta" />
+        <div class="product-info">
+          <p>Fiesta chicken nugget 250 gram</p>
+          <p class="price-strike">Rp28.900</p>
+          <p class="price-now">Rp20.900</p>
+        </div>
+        <div class="button-product">
+            <button onclick="tambahKeKeranjang('produk1')">Masukkan ke keranjang</button>
+        </div>
+      </div>
+    
+      <div class="highlight-product">
+          <img src="so-gooddino.png" alt="So Good" />
+          <div class="product-info">
+            <p>So good chicken nugget stick Premium 400 gr</p>
+            <p class="price-now">Rp42.000</p>
+          </div>
+          <div class="button-product">
+            <button onclick="tambahKeKeranjang('produk2')">Masukkan ke keranjang</button>
+          </div>
+      </div>
+    </div>
+    <div class="product-list"></div>
+  </div>
+  <div id="keranjang" class="page">
+    <header class="header">
+      <div class="top-bar">
+        <h1>keranjang saya</h1>
+      </div>
+    </header>
+  
+    <div class="content-wrapper2">
+  
+      <div id="daftar-keranjang" class="keranjang-list">
+        <!-- Produk akan dimasukkan lewat JS -->
+      </div>
+
+      <div id="total-harga-container" style="margin-top: 20px; font-weight: bold;"></div>
+  
+      <div class="keranjang-aksi">
+        <button class="nav-button" onclick="tampilkanCheckout()">Checkout item</button>
+        <button class="nav-button" onclick="kosongkanKeranjang()">Kosongkan Keranjang</button>
+      </div>
+    </div>
+  </div>
+  <nav class="bottom-nav">
+    <button class="nav-button" onclick="showPage('beranda')">🏠 Beranda</button>
+    <button class="nav-button" onclick="showPage('keranjang')">🛒 Keranjang</button>
+  </nav>
+  <!-- Modal Checkout -->
+    <div id="checkout-modal" class="checkout-modal">
+    <div class="modal-content">
+     <h2>Produk yang akan di-checkout:</h2>
+     <div id="checkout-produk-list"></div>
+
+     <h2>Pilih Metode Pembayaran</h2>
+     <label><input type="radio" name="metode" value="Transfer Bank" /> Transfer Bank</label><br />
+     <label><input type="radio" name="metode" value="E-Wallet" /> E-Wallet</label><br />
+     <label><input type="radio" name="metode" value="COD" /> COD</label><br />
+    
+     <button onclick="konfirmasiPembayaran()">Bayar Sekarang</button>
+     <button onclick="tutupCheckout()" style="margin-top: 10px;">Tutup</button>
+     </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  </body>
+</html>
