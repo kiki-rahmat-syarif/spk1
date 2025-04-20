@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ===================== Halaman Beranda ===================== -->
   <div id="beranda" class="page active">
     <header class="header">
       <div class="top-bar">
@@ -14,88 +16,94 @@
           <strong>Selamat datang!</strong>
         </div>
       </div>
+
       <div class="search-container">
         <input type="text" id="search-box" placeholder="search" />
         <span class="icon-search" onclick="cariProduk()">🔍</span>
       </div>
-      <h1>macam-macam produk:</h1>
-    
+
+      <h1>Macam-macam produk:</h1>
+
       <div class="category-filter">
-        <span onclick="filterCategory('all', event)" data-kategori="semua" class="category active">Semua</span>
+        <span onclick="filterCategory('semua', event)" data-kategori="semua" class="category active">Semua</span>
         <span onclick="filterCategory('fiesta', event)" class="category">Fiesta</span>
         <span onclick="filterCategory('sogood', event)" class="category">So Good</span>
         <span onclick="filterCategory('kenzleer', event)" class="category">Kenzleer</span>
       </div>
-    </header>  
+    </header>
+
     <div class="content-wrapper">
-      <h2 class="section-title">Diskon hari ini:</h2>
-    
-      <div class="highlight-product">
-        <img src="fiesta250.png" alt="Fiesta" />
-        <div class="product-info">
-          <p>Fiesta chicken nugget 250 gram</p>
-          <p class="price-strike">Rp28.900</p>
-          <p class="price-now">Rp20.900</p>
-        </div>
-        <div class="button-product">
-            <button onclick="tambahKeKeranjang('produk1')">Masukkan ke keranjang</button>
-        </div>
-      </div>
-    
-      <div class="highlight-product">
-          <img src="so-gooddino.png" alt="So Good" />
-          <div class="product-info">
-            <p>So good chicken nugget stick Premium 400 gr</p>
-            <p class="price-now">Rp42.000</p>
-          </div>
-          <div class="button-product">
-            <button onclick="tambahKeKeranjang('produk2')">Masukkan ke keranjang</button>
-          </div>
+      <!-- Produk Terbaik -->
+      <div id="produk-terbaik-section">
+        <h2>Rekomendasi Produk 🔥</h2>
+        <div id="produk-terbaik-list" class="product-list"></div>
       </div>
     </div>
-    <div class="product-list"></div>
+
+    <hr>
+
+    <!-- Semua Produk -->
+    <div class="produk-container">
+      <div id="produk-biasa-section">
+        <h2>Semua Produk 🛒</h2>
+        <div id="produk-biasa-list" class="product-list"></div>
+      </div>
+    </div>
   </div>
+
+  <!-- ===================== Halaman Keranjang ===================== -->
   <div id="keranjang" class="page">
     <header class="header">
       <div class="top-bar">
-        <h1>keranjang saya</h1>
+        <h1>Keranjang Saya</h1>
       </div>
     </header>
-  
+
     <div class="content-wrapper2">
-  
       <div id="daftar-keranjang" class="keranjang-list">
         <!-- Produk akan dimasukkan lewat JS -->
       </div>
 
       <div id="total-harga-container" style="margin-top: 20px; font-weight: bold;"></div>
-  
+
       <div class="keranjang-aksi">
         <button class="nav-button" onclick="tampilkanCheckout()">Checkout item</button>
         <button class="nav-button" onclick="kosongkanKeranjang()">Kosongkan Keranjang</button>
       </div>
     </div>
   </div>
+
+  <!-- ===================== Bottom Navigation ===================== -->
   <nav class="bottom-nav">
     <button class="nav-button" onclick="showPage('beranda')">🏠 Beranda</button>
     <button class="nav-button" onclick="showPage('keranjang')">🛒 Keranjang</button>
   </nav>
-  <!-- Modal Checkout -->
-    <div id="checkout-modal" class="checkout-modal">
-    <div class="modal-content">
-     <h2>Produk yang akan di-checkout:</h2>
-     <div id="checkout-produk-list"></div>
 
-     <h2>Pilih Metode Pembayaran</h2>
-     <label><input type="radio" name="metode" value="Transfer Bank" /> Transfer Bank</label><br />
-     <label><input type="radio" name="metode" value="E-Wallet" /> E-Wallet</label><br />
-     <label><input type="radio" name="metode" value="COD" /> COD</label><br />
-    
-     <button onclick="konfirmasiPembayaran()">Bayar Sekarang</button>
-     <button onclick="tutupCheckout()" style="margin-top: 10px;">Tutup</button>
-     </div>
+  <!-- ===================== Modal Checkout ===================== -->
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="modal-content">
+      <h2>Produk yang akan di-checkout:</h2>
+      <div id="checkout-produk-list"></div>
+
+      <h2>Pilih Metode Pembayaran</h2>
+      <label><input type="radio" name="metode" value="Transfer Bank" /> Transfer Bank</label><br />
+      <label><input type="radio" name="metode" value="E-Wallet" /> E-Wallet</label><br />
+      <label><input type="radio" name="metode" value="COD" /> COD</label><br />
+
+      <button onclick="konfirmasiPembayaran()">Bayar Sekarang</button>
+      <button onclick="tutupCheckout()" style="margin-top: 10px;">Tutup</button>
     </div>
   </div>
+
+  <!-- ===================== Custom Alert (Pop-up Notifikasi) ===================== -->
+  <div id="custom-alert" class="custom-alert">
+    <div class="custom-alert-box">
+      <p id="custom-alert-message">Pesan alert di sini</p>
+      <button onclick="tutupCustomAlert()">OK</button>
+    </div>
+  </div>
+
+  <!-- ===================== Script ===================== -->
   <script src="script.js"></script>
-  </body>
+</body>
 </html>
